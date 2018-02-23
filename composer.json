@@ -1,14 +1,14 @@
 {
-    "name": "kaz29/cake_slack",
+    "name": "tsukabo/cake_slack",
     "type": "cakephp-plugin",
     "description": "Slack Plugin for CakePHP",
     "keywords": ["cakephp","debug","chat","chatops"],
-    "homepage": "https://github.com/kaz29/cake_slack",
+    "homepage": "https://github.com/tsukabo/cake_slack",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kaz Watanabe",
-            "homepage": "http://kaz29.hatenablog.com/"
+            "name": "tsukabo",
+            "email": "tsukasa0809@gmail.com"
         }
     ],
     "require": {
