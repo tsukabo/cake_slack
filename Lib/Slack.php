@@ -14,7 +14,6 @@ class Slack
 			));
 		}
 
-		static::$_client->reset(true);
 		static::$_client->request['header'] = [];
 		return static::$_client;
 	}
