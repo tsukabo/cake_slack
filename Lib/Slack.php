@@ -50,10 +50,18 @@ class Slack
 			]
 		];
 
-		$response = $client->post($uri, json_encode($payload), $request);
-		if ($response->code !== 200 || $response->body !== 'ok') {
+		// slack側に問題があり通知出来ない場合のためにlogを落とす
+		try {
+			$response = $client->post($uri, json_encode($payload), $request);
+
+			if ($response->code !== 200 || $response->body !== 'ok') {
+				return false;
+			}
+		} catch (Exception $e) {
+			CakeLog::write('error', $e->getMessage());
 			return false;
 		}
+
 
 		return true;
 	}
