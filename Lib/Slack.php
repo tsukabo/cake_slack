@@ -9,7 +9,9 @@ class Slack
 
 	protected static function _getClient() {
 		if (static::$_client === null) {
-			static::$_client = new HttpSocket();
+			static::$_client = new HttpSocket(array(
+				'ssl_verify_host' => false,
+			));
 		}
 
 		static::$_client->reset(true);
