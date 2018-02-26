@@ -9,11 +9,19 @@ class Slack
 
 	protected static function _getClient() {
 		if (static::$_client === null) {
+			/**
+			 * @MEMO slackの仕様が変わって以下が出るようになったのでssl_verify_hostを切る
+			 * stream_socket_client(): Peer certificate CN=`slack.com' did not match expected CN=`hooks.slack.com'
+			 * stream_socket_client(): Failed to enable crypto stream_socket_client(): unable to connect to ssl://hooks.slack.com:443 (Unknown error) -Error 500
+			 */
+			// static::$_client = new HttpSocket();
 			static::$_client = new HttpSocket(array(
 				'ssl_verify_host' => false,
 			));
 		}
 
+		// @MEMO 何故か設定をリセットしているのでリセットしない様にする
+		// static::$_client->reset(true)
 		static::$_client->request['header'] = [];
 		return static::$_client;
 	}
