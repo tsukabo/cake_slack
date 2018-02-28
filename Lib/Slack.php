@@ -21,7 +21,7 @@ class Slack
 		}
 
 		// @MEMO 何故か設定をリセットしているのでリセットしない様にする
-		// static::$_client->reset(true)
+		// static::$_client->reset(true);
 		static::$_client->request['header'] = [];
 		return static::$_client;
 	}
